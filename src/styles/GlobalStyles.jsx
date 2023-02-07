@@ -15,6 +15,8 @@ const GlobalStyle = createGlobalStyle`
     button{
         cursor: pointer;
         outline: none;
+        border: none;
+        font-family: 'Poppins','Noto Sans KR', sans-serif;
     };
 
     input{
