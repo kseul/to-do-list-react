@@ -18,7 +18,7 @@ const HeaderContainer = styled.header`
   align-items: center;
   width: 100%;
   height: 5rem;
-  padding: 0 2rem;
+  padding: 0.6rem 2rem 0 2rem;
   border-radius: 1.5rem 1.5rem 0 0;
   background-color: #e5e7ea;
 `;

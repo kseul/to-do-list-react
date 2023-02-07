@@ -23,7 +23,7 @@ const FilterBtn = styled.button`
   margin: 1.2rem 0rem;
   height: 2.2rem;
   font-size: 0.9rem;
-  color: #999999;
+  color: #a3b2cd;
   background: none;
   font-weight: 400;
   transition: color 250ms ease-in-out;

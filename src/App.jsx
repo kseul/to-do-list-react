@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Header from './components/Header';
 import Filter from './components/Filter';
 import List from './components/List';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Header />
         <Filter />
         <List />
+        <Footer />
       </AppBox>
     </AppContainer>
   );
