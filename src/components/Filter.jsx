@@ -20,7 +20,7 @@ const FilterContainer = styled.div`
 `;
 
 const FilterBtn = styled.button`
-  margin: 1.2rem 0rem;
+  margin: 1rem 0rem;
   height: 2.2rem;
   font-size: 0.9rem;
   color: #a3b2cd;
