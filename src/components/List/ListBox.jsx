@@ -65,6 +65,7 @@ const Task = styled.div`
   line-height: 3rem;
   text-decoration: ${(props) =>
     props.checked ? 'line-through rgba(187, 200, 222, 0.7) 2px' : 'none'};
+  color: ${(props) => (props.checked ? '#aaadb1' : 'none')};
 `;
 
 const Delete = styled.div``;

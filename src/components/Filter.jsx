@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
-const Filter = () => {
+const Filter = ({ filtering }) => {
   return (
     <FilterContainer>
-      <FilterBtn>All</FilterBtn>
-      <FilterBtn>Active</FilterBtn>
-      <FilterBtn>Completed</FilterBtn>
+      {/* 필터링 1) 온클릭으로 상태값을 전달  */}
+      <FilterBtn onClick={() => filtering('All')}>All</FilterBtn>
+      <FilterBtn onClick={() => filtering('Active')}>Active</FilterBtn>
+      <FilterBtn onClick={() => filtering('Completed')}>Completed</FilterBtn>
     </FilterContainer>
   );
 };

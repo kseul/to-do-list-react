@@ -7,14 +7,9 @@ import { useRef, useState } from 'react';
 
 function App() {
   const [task, setTask] = useState('');
-  const [taskList, setTaskList] = useState([
-    {
-      id: 1,
-      task: '공부하기✨',
-      isChecked: false,
-    },
-  ]);
-  const taskId = useRef(2);
+  const [taskList, setTaskList] = useState([]);
+  const [filterType, setFilterType] = useState('All'); // 필터링 2) 온클릭으로 전달된 상태값 저장
+  const taskId = useRef(0);
 
   const handleInputChange = (e) => {
     setTask(e.target.value);
@@ -23,7 +18,10 @@ function App() {
   const addTask = (e) => {
     e.preventDefault();
     if (task === '') return;
-    setTaskList([...taskList, { id: taskId.current, task, isChecked: false }]);
+    setTaskList([
+      ...taskList,
+      { id: taskId.current, task, isChecked: false, type: 'Active' },
+    ]);
     taskId.current++;
     setTask('');
   };
@@ -39,14 +37,33 @@ function App() {
     );
   };
 
+  const filtering = (filter) => {
+    setFilterType(filter);
+  };
+
+  // 필터링 3) 각 task에 체크 유무에 따른 필터값을 부여해준다.
   const handleChecked = (id, e) => {
+    const checked = e.target.checked;
     setTaskList(
       taskList.map((task) => {
-        if (task.id === id) {
-          return { ...task, isChecked: e.target.checked };
-        } else {
-          return task;
+        // 내가 선택한 task의 id가 일치해야하고 && 체크가 true일때 'Completed'로 설정
+        if (task.id === id && checked) {
+          return {
+            ...task,
+            isChecked: checked, // true
+            type: 'Completed',
+          };
         }
+        // 내가 선택한 task의 id가 일치, 위에서 체크가 true가 아닌 false로 걸러질 때 이 문으로 내려옴
+        else if (task.id === id) {
+          return {
+            ...task,
+            isChecked: checked, // false
+            type: 'Active',
+          };
+        }
+        // 내가 선택한 값이 아닐때 변동주지 않기 (체크가 false이든 true이든 상관x)
+        else return task;
       })
     );
   };
@@ -55,11 +72,12 @@ function App() {
     <AppContainer>
       <AppBox>
         <Header />
-        <Filter />
+        <Filter filtering={filtering} />
         <List
           taskList={taskList}
           deleteTask={deleteTask}
           handleChecked={handleChecked}
+          filterType={filterType} // 필터링 4) 클릭한 필터 상태값을 전달
         />
         <AddForm
           task={task}
