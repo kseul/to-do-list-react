@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Header from './components/Header';
 import Filter from './components/Filter';
 import List from './components/List';
-import Footer from './components/Footer';
+import AddForm from './components/AddForm';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         <Header />
         <Filter />
         <List />
-        <Footer />
+        <AddForm />
       </AppBox>
     </AppContainer>
   );

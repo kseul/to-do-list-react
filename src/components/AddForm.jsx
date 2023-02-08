@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
-const Footer = () => {
+const AddForm = () => {
   return (
-    <FooterContainer>
-      <AddForm>
+    <AddFormContainer>
+      <AddList>
         <AddInput></AddInput>
         <AddBtn>Add</AddBtn>
-      </AddForm>
-    </FooterContainer>
+      </AddList>
+    </AddFormContainer>
   );
 };
 
-const FooterContainer = styled.footer`
+const AddFormContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,7 +21,7 @@ const FooterContainer = styled.footer`
   border-radius: 0 0 1.5rem 1.5rem;
 `;
 
-const AddForm = styled.div`
+const AddList = styled.div`
   display: flex;
   width: 86%;
   height: 2.2rem;
@@ -53,4 +53,4 @@ const AddBtn = styled.div`
   }
 `;
 
-export default Footer;
+export default AddForm;
