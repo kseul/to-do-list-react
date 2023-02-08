@@ -22,7 +22,7 @@ const AppContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f0f0;
+  background-color: #f7f7f7;
 `;
 
 const AppBox = styled.div`
@@ -33,7 +33,7 @@ const AppBox = styled.div`
   height: 40rem;
   background-color: #ffffff;
   border-radius: 1.5rem;
-  box-shadow: 6px 6px 25px -25px #b5b5b5;
+  box-shadow: 5px 5px 30px -20px #a3a3a3;
 `;
 
 export default App;

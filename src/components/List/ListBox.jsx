@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { TbTrash } from 'react-icons/tb';
+import { FcEmptyTrash } from 'react-icons/fc';
 
 const ListBox = () => {
   return (
@@ -18,7 +18,7 @@ const ListBox = () => {
 };
 
 const ListBoxContainer = styled.ul`
-  margin: 0.3rem 0;
+  margin: 0.2rem 0;
   padding: 0;
   width: 82%;
 `;
@@ -59,7 +59,7 @@ const Task = styled.div`
 
 const Delete = styled.div``;
 
-const Icon = styled(TbTrash)`
+const Icon = styled(FcEmptyTrash)`
   margin-top: 1rem;
   &:hover {
     cursor: pointer;

@@ -17,6 +17,7 @@ const ListContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
+  margin-top: 0.5rem;
   border-radius: 0 0 1.5rem 1.5rem;
 `;
 

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { RiMoonClearLine } from 'react-icons/ri';
+import { BiSun } from 'react-icons/bi';
 
 const Header = () => {
   return (
@@ -7,6 +8,7 @@ const Header = () => {
       <Title>My Task</Title>
       <IconWrapper>
         <RiMoonClearLine size={23} />
+        <BiSun size={26} />
       </IconWrapper>
     </HeaderContainer>
   );
