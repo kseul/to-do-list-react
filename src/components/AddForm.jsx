@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-const AddForm = () => {
+const AddForm = ({ task, handleSubmit, handleChange, handleId }) => {
   return (
     <AddFormContainer>
-      <AddList>
-        <AddInput></AddInput>
-        <AddBtn>Add</AddBtn>
-      </AddList>
+      <AddListForm onSubmit={handleSubmit}>
+        <AddInput type='text' value={task} onChange={handleChange}></AddInput>
+        <AddBtn onClick={handleSubmit}>Add</AddBtn>
+      </AddListForm>
     </AddFormContainer>
   );
 };
@@ -21,7 +21,7 @@ const AddFormContainer = styled.div`
   border-radius: 0 0 1.5rem 1.5rem;
 `;
 
-const AddList = styled.div`
+const AddListForm = styled.form`
   display: flex;
   width: 86%;
   height: 2.2rem;

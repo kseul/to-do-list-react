@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import ListBox from './ListBox';
 
-const List = () => {
+const List = ({ taskList }) => {
   return (
     <ListContainer>
-      <ListBox />
-      <ListBox />
-      <ListBox />
+      {taskList.map((task) => (
+        <ListBox task={task} key={task.id} />
+      ))}
     </ListContainer>
   );
 };
@@ -16,9 +16,18 @@ const ListContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  max-height: 26rem;
   height: 100%;
-  margin-top: 0.5rem;
+  padding-top: 0.5rem;
   border-radius: 0 0 1.5rem 1.5rem;
+  overflow-y: auto;
+  ::-webkit-scrollbar {
+    width: 0.4rem;
+    background-color: #e1e1e1;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #bbc8de;
+  }
 `;
 
 export default List;

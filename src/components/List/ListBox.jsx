@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { FcEmptyTrash } from 'react-icons/fc';
 
-const ListBox = () => {
+const ListBox = ({ task }) => {
   return (
     <ListBoxContainer>
       <List>
         <TaskContainer>
           <CheckBox type='checkbox'></CheckBox>
-          <Task>공부하기</Task>
+          <Task>{task.task}</Task>
         </TaskContainer>
         <Delete>
           <Icon size={18}>아이콘</Icon>
