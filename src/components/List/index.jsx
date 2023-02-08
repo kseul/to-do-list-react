@@ -1,11 +1,17 @@
 import styled from 'styled-components';
 import ListBox from './ListBox';
 
-const List = ({ taskList, deleteTask }) => {
+const List = ({ taskList, deleteTask, handleChecked }) => {
   return (
     <ListContainer>
       {taskList.map((task) => (
-        <ListBox task={task} deleteTask={deleteTask} key={task.id} />
+        <ListBox
+          task={task}
+          deleteTask={deleteTask}
+          id={task.id}
+          handleChecked={handleChecked}
+          key={task.id}
+        />
       ))}
     </ListContainer>
   );

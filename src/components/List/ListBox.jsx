@@ -1,13 +1,19 @@
 import styled from 'styled-components';
 import { FcEmptyTrash } from 'react-icons/fc';
 
-const ListBox = ({ task, deleteTask }) => {
+const ListBox = ({ task, deleteTask, handleChecked, id }) => {
   return (
     <ListBoxContainer>
       <List>
         <TaskContainer>
-          <CheckBox type='checkbox'></CheckBox>
-          <Task>{task.task}</Task>
+          <CheckBox
+            type='checkbox'
+            checked={task.isChecked}
+            onChange={(e) => {
+              handleChecked(id, e);
+            }}
+          ></CheckBox>
+          <Task checked={task.isChecked}>{task.task}</Task>
         </TaskContainer>
         <Delete>
           <Icon onClick={deleteTask} id={task.id} size={18}>
@@ -57,6 +63,8 @@ const Task = styled.div`
   margin-top: 0.2rem;
   font-size: 1rem;
   line-height: 3rem;
+  text-decoration: ${(props) =>
+    props.checked ? 'line-through rgba(187, 200, 222, 0.7) 2px' : 'none'};
 `;
 
 const Delete = styled.div``;

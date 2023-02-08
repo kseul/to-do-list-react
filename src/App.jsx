@@ -10,17 +10,11 @@ function App() {
   const [taskList, setTaskList] = useState([
     {
       id: 1,
-      task: '코딩하기✍️',
-    },
-    {
-      id: 2,
-      task: '언덕오르기🔥',
-    },
-    {
-      id: 3,
-      task: '미라클모닝 하기✨',
+      task: '공부하기✨',
+      isChecked: false,
     },
   ]);
+  const taskId = useRef(2);
 
   const handleInputChange = (e) => {
     setTask(e.target.value);
@@ -29,7 +23,7 @@ function App() {
   const addTask = (e) => {
     e.preventDefault();
     if (task === '') return;
-    setTaskList([...taskList, { id: taskId.current, task: task }]);
+    setTaskList([...taskList, { id: taskId.current, task, isChecked: false }]);
     taskId.current++;
     setTask('');
   };
@@ -45,14 +39,28 @@ function App() {
     );
   };
 
-  const taskId = useRef(4);
+  const handleChecked = (id, e) => {
+    setTaskList(
+      taskList.map((task) => {
+        if (task.id === id) {
+          return { ...task, isChecked: e.target.checked };
+        } else {
+          return task;
+        }
+      })
+    );
+  };
 
   return (
     <AppContainer>
       <AppBox>
         <Header />
         <Filter />
-        <List taskList={taskList} deleteTask={deleteTask} />
+        <List
+          taskList={taskList}
+          deleteTask={deleteTask}
+          handleChecked={handleChecked}
+        />
         <AddForm
           task={task}
           handleInputChange={handleInputChange}
