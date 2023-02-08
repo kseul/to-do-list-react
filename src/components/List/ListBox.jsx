@@ -10,7 +10,7 @@ const ListBox = ({ task, deleteTask }) => {
           <Task>{task.task}</Task>
         </TaskContainer>
         <Delete>
-          <Icon onClick={deleteTask} size={18}>
+          <Icon onClick={deleteTask} id={task.id} size={18}>
             아이콘
           </Icon>
         </Delete>

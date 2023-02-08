@@ -21,21 +21,31 @@ function App() {
       task: '미라클모닝 하기✨',
     },
   ]);
-  const taskId = useRef(4);
 
   const handleInputChange = (e) => {
     setTask(e.target.value);
   };
 
   const addTask = (e) => {
-    if (task === '') return;
     e.preventDefault();
+    if (task === '') return;
     setTaskList([...taskList, { id: taskId.current, task: task }]);
     taskId.current++;
     setTask('');
   };
 
-  const deleteTask = (e) => {};
+  const deleteTask = (e) => {
+    // currentTarget 은 내가 그 버튼을 눌렀을 때, svg나 path에 따라서 target이 설정되는 것이 아니고, 그 evnet가 달린 컴포넌트가 선택되기 때문
+    // 따라서 -> e.target.id (x) e.currentTarget.id (o)
+    const deleteId = e.currentTarget.id;
+    setTaskList(
+      taskList.filter((task) => {
+        return task.id !== parseInt(deleteId);
+      })
+    );
+  };
+
+  const taskId = useRef(4);
 
   return (
     <AppContainer>
