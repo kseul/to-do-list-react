@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FcEmptyTrash } from 'react-icons/fc';
 
-const ListBox = ({ task }) => {
+const ListBox = ({ task, deleteTask }) => {
   return (
     <ListBoxContainer>
       <List>
@@ -10,7 +10,9 @@ const ListBox = ({ task }) => {
           <Task>{task.task}</Task>
         </TaskContainer>
         <Delete>
-          <Icon size={18}>아이콘</Icon>
+          <Icon onClick={deleteTask} size={18}>
+            아이콘
+          </Icon>
         </Delete>
       </List>
     </ListBoxContainer>

@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 
-const AddForm = ({ task, handleSubmit, handleChange, handleId }) => {
+const AddForm = ({ task, addTask, handleInputChange, handleId }) => {
   return (
     <AddFormContainer>
-      <AddListForm onSubmit={handleSubmit}>
-        <AddInput type='text' value={task} onChange={handleChange}></AddInput>
-        <AddBtn onClick={handleSubmit}>Add</AddBtn>
+      <AddListForm onSubmit={addTask}>
+        <AddInput
+          type='text'
+          value={task}
+          onChange={handleInputChange}
+        ></AddInput>
+        <AddBtn onClick={addTask}>Add</AddBtn>
       </AddListForm>
     </AddFormContainer>
   );

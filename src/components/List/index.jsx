@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import ListBox from './ListBox';
 
-const List = ({ taskList }) => {
+const List = ({ taskList, deleteTask }) => {
   return (
     <ListContainer>
       {taskList.map((task) => (
-        <ListBox task={task} key={task.id} />
+        <ListBox task={task} deleteTask={deleteTask} key={task.id} />
       ))}
     </ListContainer>
   );

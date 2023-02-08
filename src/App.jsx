@@ -23,29 +23,30 @@ function App() {
   ]);
   const taskId = useRef(4);
 
-  const handleSubmit = (e) => {
+  const handleInputChange = (e) => {
+    setTask(e.target.value);
+  };
+
+  const addTask = (e) => {
     if (task === '') return;
     e.preventDefault();
     setTaskList([...taskList, { id: taskId.current, task: task }]);
-    setTask('');
     taskId.current++;
-    console.log(taskId.current);
+    setTask('');
   };
 
-  const handleChange = (e) => {
-    setTask(e.target.value);
-  };
+  const deleteTask = (e) => {};
 
   return (
     <AppContainer>
       <AppBox>
         <Header />
         <Filter />
-        <List taskList={taskList} />
+        <List taskList={taskList} deleteTask={deleteTask} />
         <AddForm
           task={task}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
+          handleInputChange={handleInputChange}
+          addTask={addTask}
         />
       </AppBox>
     </AppContainer>
