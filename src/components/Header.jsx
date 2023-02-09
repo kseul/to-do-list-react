@@ -1,8 +1,14 @@
 import styled from 'styled-components';
 import { RiMoonClearLine } from 'react-icons/ri';
 import { BiSun } from 'react-icons/bi';
+import { useContext } from 'react';
+import { DarkModeContext } from '../context/DarkModeContext';
 
 const Header = () => {
+  const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
+  console.log(isDarkMode);
+  console.log(toggleDarkMode);
+
   return (
     <HeaderContainer>
       <Title>My Task</Title>

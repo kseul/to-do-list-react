@@ -4,6 +4,7 @@ import Filter from './components/Filter';
 import List from './components/List';
 import AddForm from './components/AddForm';
 import { useRef, useState } from 'react';
+import { DarkModeProvider } from './context/DarkModeContext';
 
 function App() {
   const [task, setTask] = useState('');
@@ -67,25 +68,28 @@ function App() {
       })
     );
   };
+  console.log();
 
   return (
-    <AppContainer>
-      <AppBox>
-        <Header />
-        <Filter filtering={filtering} />
-        <List
-          taskList={taskList}
-          deleteTask={deleteTask}
-          handleChecked={handleChecked}
-          filterType={filterType} // 필터링 4) 클릭한 필터 상태값을 전달
-        />
-        <AddForm
-          task={task}
-          handleInputChange={handleInputChange}
-          addTask={addTask}
-        />
-      </AppBox>
-    </AppContainer>
+    <DarkModeProvider>
+      <AppContainer>
+        <AppBox>
+          <Header />
+          <Filter filtering={filtering} />
+          <List
+            taskList={taskList}
+            deleteTask={deleteTask}
+            handleChecked={handleChecked}
+            filterType={filterType} // 필터링 4) 클릭한 필터 상태값을 전달
+          />
+          <AddForm
+            task={task}
+            handleInputChange={handleInputChange}
+            addTask={addTask}
+          />
+        </AppBox>
+      </AppContainer>
+    </DarkModeProvider>
   );
 }
 
