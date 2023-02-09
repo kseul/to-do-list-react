@@ -3,14 +3,23 @@ import Header from './components/Header';
 import Filter from './components/Filter';
 import List from './components/List';
 import AddForm from './components/AddForm';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { DarkModeProvider } from './context/DarkModeContext';
 
 function App() {
   const [task, setTask] = useState('');
-  const [taskList, setTaskList] = useState([]);
+  const [taskList, setTaskList] = useState(() => taskListFromLocalStorage());
   const [filterType, setFilterType] = useState('All'); // 필터링 2) 온클릭으로 전달된 상태값 저장
   const taskId = useRef(0);
+
+  function taskListFromLocalStorage() {
+    const taskLists = localStorage.getItem('tasks');
+    return taskLists ? JSON.parse(taskLists) : [];
+  }
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(taskList));
+  }, [taskList]);
 
   const handleInputChange = (e) => {
     setTask(e.target.value);
@@ -28,7 +37,7 @@ function App() {
   };
 
   const deleteTask = (e) => {
-    // currentTarget 은 내가 그 버튼을 눌렀을 때, svg나 path에 따라서 target이 설정되는 것이 아니고, 그 evnet가 달린 컴포넌트가 선택되기 때문
+    // currentTarget 은 내가 그 버튼을 눌렀을 때, svg나 path에 따라서 target이 설정되는 것이 아니고, 그 event가 달린 컴포넌트가 선택되기 때문
     // 따라서 -> e.target.id (x) e.currentTarget.id (o)
     const deleteId = e.currentTarget.id;
     setTaskList(
@@ -68,7 +77,6 @@ function App() {
       })
     );
   };
-  console.log();
 
   return (
     <DarkModeProvider>

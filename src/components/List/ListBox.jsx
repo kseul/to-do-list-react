@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import { FcEmptyTrash } from 'react-icons/fc';
+import { useContext } from 'react';
+import { DarkModeContext } from '../../context/DarkModeContext';
 
 const ListBox = ({ task, deleteTask, handleChecked, id }) => {
+  const { isDarkMode } = useContext(DarkModeContext);
+
   return (
     <ListBoxContainer>
       <List>
@@ -13,7 +17,9 @@ const ListBox = ({ task, deleteTask, handleChecked, id }) => {
               handleChecked(id, e);
             }}
           ></CheckBox>
-          <Task checked={task.isChecked}>{task.task}</Task>
+          <Task checked={task.isChecked} darkMode={isDarkMode}>
+            {task.task}
+          </Task>
         </TaskContainer>
         <Delete>
           <Icon onClick={deleteTask} id={task.id} size={18}>
@@ -65,7 +71,13 @@ const Task = styled.div`
   line-height: 3rem;
   text-decoration: ${(props) =>
     props.checked ? 'line-through rgba(187, 200, 222, 0.7) 2px' : 'none'};
-  color: ${(props) => (props.checked ? '#aaadb1' : 'none')};
+  color: ${(props) => {
+    if (props.checked && props.darkMode) {
+      return '#aaadb1';
+    } else if (props.darkMode) {
+      return 'white';
+    }
+  }};
 `;
 
 const Delete = styled.div``;

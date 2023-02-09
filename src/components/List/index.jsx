@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 import ListBox from './ListBox';
+import { useContext } from 'react';
+import { DarkModeContext } from '../../context/DarkModeContext';
 
 const List = ({ taskList, deleteTask, handleChecked, filterType }) => {
+  const { isDarkMode } = useContext(DarkModeContext);
+
   return (
-    <ListContainer>
+    <ListContainer darkMode={isDarkMode}>
       {/* 필터링 5)
           props로 받아온 내가 클릭한 filterType 상태값과
           taskList를 map으로 돌려서 각각의 task에 부여해준 type을 비교하여 렌더링
@@ -47,8 +51,8 @@ const ListContainer = styled.div`
   max-height: 26rem;
   height: 100%;
   padding-top: 0.5rem;
-  border-radius: 0 0 1.5rem 1.5rem;
   overflow-y: auto;
+  background-color: ${(props) => (props.darkMode ? '#48527a' : 'white')};
   ::-webkit-scrollbar {
     width: 0.4rem;
     background-color: #e1e1e1;

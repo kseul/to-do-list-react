@@ -1,8 +1,12 @@
 import styled from 'styled-components';
+import { useContext } from 'react';
+import { DarkModeContext } from '../context/DarkModeContext';
 
 const Filter = ({ filtering }) => {
+  const { isDarkMode } = useContext(DarkModeContext);
+
   return (
-    <FilterContainer>
+    <FilterContainer darkMode={isDarkMode}>
       {/* 필터링 1) 온클릭으로 상태값을 전달  */}
       <FilterBtn onClick={() => filtering('All')}>All</FilterBtn>
       <FilterBtn onClick={() => filtering('Active')}>Active</FilterBtn>
@@ -17,7 +21,7 @@ const FilterContainer = styled.div`
   justify-content: space-around;
   width: 100%;
   height: 4.5rem;
-  background-color: #e5e7ea;
+  background-color: ${(props) => (props.darkMode ? '#07224b' : '#e5e7ea')};
 `;
 
 const FilterBtn = styled.button`

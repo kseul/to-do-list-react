@@ -1,8 +1,12 @@
 import styled from 'styled-components';
+import { useContext } from 'react';
+import { DarkModeContext } from '../context/DarkModeContext';
 
 const AddForm = ({ task, addTask, handleInputChange, handleId }) => {
+  const { isDarkMode } = useContext(DarkModeContext);
+
   return (
-    <AddFormContainer>
+    <AddFormContainer darkMode={isDarkMode}>
       <AddListForm onSubmit={addTask}>
         <AddInput
           type='text'
@@ -21,8 +25,8 @@ const AddFormContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 6rem;
-  background-color: #e5e7ea;
   border-radius: 0 0 1.5rem 1.5rem;
+  background-color: ${(props) => (props.darkMode ? '#07224b' : '#e5e7ea')};
 `;
 
 const AddListForm = styled.form`

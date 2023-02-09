@@ -6,15 +6,16 @@ import { DarkModeContext } from '../context/DarkModeContext';
 
 const Header = () => {
   const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
-  console.log(isDarkMode);
-  console.log(toggleDarkMode);
 
   return (
-    <HeaderContainer>
-      <Title>My Task</Title>
+    <HeaderContainer darkMode={isDarkMode}>
+      <Title darkMode={isDarkMode}>My Task</Title>
       <IconWrapper>
-        <RiMoonClearLine size={23} />
-        <BiSun size={26} />
+        {isDarkMode ? (
+          <BiSun onClick={toggleDarkMode} size={26} fill='#fff' />
+        ) : (
+          <RiMoonClearLine onClick={toggleDarkMode} size={23} />
+        )}
       </IconWrapper>
     </HeaderContainer>
   );
@@ -28,12 +29,13 @@ const HeaderContainer = styled.header`
   height: 5rem;
   padding: 0.6rem 2rem 0 2rem;
   border-radius: 1.5rem 1.5rem 0 0;
-  background-color: #e5e7ea;
+  background-color: ${(props) => (props.darkMode ? '#07224b' : '#e5e7ea')};
 `;
 
 const Title = styled.h2`
   font-size: 1.2rem;
   font-weight: 500;
+  color: ${(props) => (props.darkMode ? '#ececec' : 'none')};
 `;
 
 const IconWrapper = styled.div`
@@ -41,5 +43,4 @@ const IconWrapper = styled.div`
     cursor: pointer;
   }
 `;
-
 export default Header;
