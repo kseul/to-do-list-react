@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useContext } from 'react';
 import { DarkModeContext } from '../context/DarkModeContext';
 
-const AddForm = ({ task, addTask, handleInputChange, handleId }) => {
+const AddForm = ({ task, addTask, handleInputChange }) => {
   const { isDarkMode } = useContext(DarkModeContext);
 
   return (
