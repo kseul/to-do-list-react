@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AddTodo from '../AddTodo/AddTodo';
 import Todo from '../Todo/Todo';
+import styles from './TodoList.module.css';
 
 const TodoList = ({ filter }) => {
   const [todos, setTodos] = useState([]);
@@ -17,8 +18,8 @@ const TodoList = ({ filter }) => {
 
   return (
     // TodoList 컴포넌트에서는 투두를 받아서 그것을 보여주기만 함
-    <section>
-      <ul>
+    <section className={styles.container}>
+      <ul className={styles.list}>
         {filtered.map((item) => (
           <Todo
             key={item.id}
@@ -34,6 +35,7 @@ const TodoList = ({ filter }) => {
   );
 };
 
+// 함수내부의 다른 상태와 밀접하게 연관있는 함수가 아니라면, 차라리 인자로 받아서 외부에 선언하는것이 메모리측면에서 좋다.
 const getFilteredItems = (todos, filter) => {
   if (filter === 'all') {
     return todos;
