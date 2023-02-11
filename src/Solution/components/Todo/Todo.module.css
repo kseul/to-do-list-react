@@ -7,7 +7,6 @@ css 모듈을 사용하고 있으므로 다른 컴포넌트에서 btn 클래스�
   align-items: center;
   padding: 0.5rem 1rem;
   margin: 0.1rem 0;
-  color: var(--color-text);
 }
 
 .checkbox {
@@ -18,6 +17,7 @@ css 모듈을 사용하고 있으므로 다른 컴포넌트에서 btn 클래스�
 .text {
   flex: 1 1 0%;
   margin-left: 0.5rem;
+  color: var(--color-text);
 }
 
 .icon {
