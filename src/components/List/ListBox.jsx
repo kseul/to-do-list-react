@@ -11,13 +11,18 @@ const ListBox = ({ task, deleteTask, handleChecked, id }) => {
       <List>
         <TaskContainer>
           <CheckBox
+            id={task.id}
             type='checkbox'
             checked={task.isChecked}
             onChange={(e) => {
               handleChecked(id, e);
             }}
           ></CheckBox>
-          <Task checked={task.isChecked} darkMode={isDarkMode}>
+          <Task
+            checked={task.isChecked}
+            darkMode={isDarkMode}
+            htmlFor={task.id}
+          >
             {task.task}
           </Task>
         </TaskContainer>
@@ -65,7 +70,7 @@ const CheckBox = styled.input`
   }
 `;
 
-const Task = styled.div`
+const Task = styled.label`
   margin-top: 0.2rem;
   font-size: 1rem;
   line-height: 3rem;

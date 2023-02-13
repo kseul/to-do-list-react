@@ -27,7 +27,7 @@ function App() {
 
   const addTask = (e) => {
     e.preventDefault();
-    if (task === '') return;
+    if (task.trim().length === 0) return;
     setTaskList([
       ...taskList,
       { id: taskId.current, task, isChecked: false, type: 'Active' },

@@ -8,9 +8,9 @@ const TodoList = ({ filter }) => {
    ❗️❗️ 함수를 호출해서 데이터를 읽어오거나 로컬스토리지를 사용하거나 파일을 사용하거나 네트워크상에서 읽어오는 등의 일처리를 할 때는 위 함수(TodoList)가 호출될 때마다 반복해서 계속 읽어오게 된다.
    내부적으로 읽어온 값대신, 내부적으로 가지고 있는 값을 쓸것이므로 UI업데이트는 되지않음. 하지만! 계속 불필요한 통신을 (읽어오게)하게된다. 
    -> 이렇게 함수를 읽거나 무거운 함수를 처리하거나 등의 일을 방지하기 위해서는 콜백으로 감싸주기
+   // const [todos, setTodos] = useState(readTodosFromLocalStorage()); X
    */
-  // const [todos, setTodos] = useState(readTodosFromLocalStorage());
-  const [todos, setTodos] = useState(() => readTodosFromLocalStorage());
+  const [todos, setTodos] = useState(() => readTodosFromLocalStorage()); // O
 
   const handleAdd = (todo) => setTodos([...todos, todo]);
 
@@ -46,7 +46,6 @@ const TodoList = ({ filter }) => {
 };
 
 function readTodosFromLocalStorage() {
-  console.log('hi');
   const todos = localStorage.getItem('todos');
   return todos ? JSON.parse(todos) : [];
 }

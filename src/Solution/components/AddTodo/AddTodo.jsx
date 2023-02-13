@@ -24,6 +24,7 @@ const AddTodo = ({ onAdd }) => {
         value={text}
         onChange={handleChange}
       />
+      <label htmlFor=''></label>
       <button className={styles.btn}>Add</button>
     </form>
   );
