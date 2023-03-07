@@ -3,4 +3,4 @@
 
 <br>
 
-> ✍️ 기록 ) https://velog.io/@seul06/todolist-react-practice ✨
+> [✍️ 기록 ) 리액트로 투두리스트 만들기](https://velog.io/@seul06/todolist-react-practice) ✨
